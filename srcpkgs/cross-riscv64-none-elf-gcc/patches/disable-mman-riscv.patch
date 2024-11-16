@@ -1,0 +1,11 @@
+--- a/libgcc/libgcov.h	2024-08-01 08:17:17.000000000 +0000
++++ b/libgcc/libgcov.h	2024-11-15 13:47:47.817596536 +0000
+@@ -45,6 +45,8 @@
+ #include "libgcc_tm.h"
+ #include "gcov.h"
+ 
++#undef HAVE_SYS_MMAN_H // RISC-V environment doesn't have it
++
+ #if HAVE_SYS_MMAN_H
+ #include <sys/mman.h>
+ #endif

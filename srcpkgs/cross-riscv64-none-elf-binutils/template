@@ -1,0 +1,37 @@
+# Template file for 'cross-riscv64-none-elf-binutils'
+_triplet=riscv64-none-elf
+_pkgname=binutils
+pkgname=cross-${_triplet}-${_pkgname}
+version=2.43
+revision=1
+
+short_desc="GNU binary utilities for RISC-V (bare-metal) target"
+maintainer="Miraris <miraris@autistici.org>"
+license="GPL-3.0-or-later"
+homepage="https://www.gnu.org/${_pkgname}/"
+
+distfiles="${GNU_SITE}/${_pkgname}/${_pkgname}-${version}.tar.xz"
+checksum=b53606f443ac8f01d1d5fc9c39497f2af322d99e14cea5c0b4b124d630379365
+
+hostmakedepends="pkgconf"
+makedepends="zlib-devel"
+nocross=yes
+
+build_style=gnu-configure
+configure_args="--prefix=/usr
+ --target=${_triplet}
+ --with-sysroot=/usr/${_triplet}
+ --disable-nls
+ --disable-werror
+ --enable-deterministic-archives
+ --enable-interwork
+ --enable-multilib
+ --enable-plugins
+ --enable-ld=default
+ --with-system-zlib
+ --with-gnu-as
+ --with-gnu-ld"
+
+post_install() {
+	rm -fr ${DESTDIR}/usr/share/info
+}

@@ -1,0 +1,15 @@
+# Template file for 'cross-riscv64-none-elf'
+# Keep in sync with cross-riscv64-none-elf-gcc
+_triplet=riscv64-none-elf
+
+pkgname=cross-${_triplet}
+version=14.2.0
+revision=1
+build_style=meta
+depends="cross-${_triplet}-binutils cross-${_triplet}-gcc cross-${_triplet}-newlib"
+short_desc="GNU Cross toolchain for the RISC-V architecture (bare-metal)"
+maintainer="Miraris <miraris@autistici.org>"
+license="GPL-3.0-or-later, GPL-2.0-or-later, LGPL-2.1-or-later"
+homepage="https://gcc.gnu.org"
+
+short_desc+=" (metapackage)"
